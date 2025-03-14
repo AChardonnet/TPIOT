@@ -1,0 +1,24 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-log:/var/lib/zookeeper/log
+    networks:
+      - kafka-network
+
+networks:
+  kafka-network:
+    name: kafka-network
+
+volumes:
+  zookeeper-data:
+    name: zookeeper-data
+  zookeeper-log:
+    name: zookeeper-log
