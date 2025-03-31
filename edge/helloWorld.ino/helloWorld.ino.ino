@@ -1,8 +1,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
-#include "credentials.h" 
-
-const char* mqtt_server = "192.168.137.218";
+#include "credentials.h"
+#include "conf.h" 
 
 WiFiClient espClient;
 PubSubClient client(espClient);

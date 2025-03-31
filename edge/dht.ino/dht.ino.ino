@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include "credentials.h"
+#include "conf.h"
 #include <DHT.h>
 
-const char* mqtt_server = "192.168.137.218";
 #define DHTPIN 21     // Digital pin connected to the DHT sensor
 #define DHTTYPE DHT22   // DHT 22 (AM2302)
 
