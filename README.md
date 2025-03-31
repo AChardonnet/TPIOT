@@ -58,7 +58,7 @@ Générer les clefs `ssh-keygen -t ecdsa`. En cas de problème, se référer à 
 Par défaut les clefs se trouvent dans le dossier `C:\Users\<Utilisateur>\.ssh` (`/home/<Utilisateur>/.ssh` sous Linux). Le fichier `id_ecdsa` contient la clef **privée** et le fichier `id_ecdsa.pub` contient la clef **publique**.
 
 
-### OS
+### OS (Système d'expoitation)
 
 Tout d'abord il faut "flasher" un os sur une carte micro SD. Pour cela on utilise un logiciel spécifique (ex: [Raspberry Pi Imager](https://www.raspberrypi.com/software/)).
 Cliquer sur `CHOISIR L'OS` puis sur `Raspberry Pi OS (other)` et enfin `Raspberry Pi OS Lite (64-bit)`.
