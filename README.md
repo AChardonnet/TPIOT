@@ -1,4 +1,9 @@
 # TP IOT
+## Introduction
+Ce dépot rassemble tous les fichiers nécessaire à la réalisation d'un TP d'IOT.
+Le TP suit une architecture Edge Fog Cloud. Le cloud est hébergé sur un ordinateur personnel, le fog sur une machine du type Raspberry Pi et le edge sur une carte esp32.
+
+Pour que tout fonctionne correctement, les 3 machines doivent être connectées au même réseau. Si c'est disponible sur votre ordinateur, il est plus simple de les connecter au partage de connexion de votre ordinateur afin de créer un réseau isolé.
 ## Installation
 
  - ### Cloud
