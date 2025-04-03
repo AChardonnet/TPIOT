@@ -20,7 +20,8 @@ Pour que tout fonctionne correctement, les 3 machines doivent être connectées 
 	 1. Créer une copie du fichier `credentials.h` dans les dossier se terminant par `.ino`
 	 2. Entrer le SSID et le mot de passe du Wi-Fi à utiliser dans tous les fichiers `credentials.h` créés.
 	 3. Modifier l'ip dans les fichiers `conf.h` pour qu'elle corresponde à l'ip de la machine fog.
-	 4. Avec l'IDE Arduino ouvrir le dossier .ino et transférer le code sur la carte esp32.
+	 4. Dans l'IDE Arduino, installer les extensions `DHT sensor library` par Adafruit et `PubSubClient` par Nick O'Leary.
+	 5. Avec l'IDE Arduino ouvrir le dossier .ino et transférer le code sur la carte esp32.
  - ### Consumer
 	 1. Créer un environnement virtuel `python  -m  venv venv`
 	 2. Activer l'environnement virtuel ([se référer au tableau de la documentation](https://docs.python.org/3/library/venv.html#how-venvs-work)).
@@ -99,3 +100,6 @@ sudo apt-get update
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+
+## Problèmes fréquents
+- Le Réseau de l'Umons a tendance à bloquer le protocole NTP (Network Time Protocol). Si l'heure et la date sont trop déréglées, cela peut créer des erreurs du type `Release file for http://deb.debian.org/debian-security/dists/bookworm-security/InRelease is not valid yet (invalid for another 1h 38min 49s). Updates for this repository will not be applied.` Il faut donc régler l'heure du Raspberry Pi à la main (`sudo date -s 2025-12-31` `sudo date -s 10:43`)
