@@ -6,8 +6,8 @@ Le TP suit une architecture Edge Fog Cloud. Le cloud est hébergé sur un ordina
 Pour que tout fonctionne correctement, les 3 machines doivent être connectées au même réseau. Si c'est disponible sur votre ordinateur, il est plus simple de les connecter au partage de connexion de votre ordinateur afin de créer un réseau isolé.
 ## Installation
 
--  ### Cloud(voir section détaillée ci-après)
-1. Installer Docker 
+-  ### Cloud
+1. Installer Docker (voir section détaillée ci-après)
 2. Se placer dans le dossier cloud.
 3. Dans le fichier `docker-compose.yml`, modifier le service `kafka-broker` modifiez la variable d'environnement `KAFKA_ADVERTISED_LISTENERS` pour que l'ip indiquée corresponde à celle du cloud (de votre ordinateur). Attention un ordinateur peut avoir plusieurs adresses ip. Celle du partage de connexion commencera généralement par `192.168`.
 4.  `docker compose up -d`
@@ -21,7 +21,7 @@ Pour que tout fonctionne correctement, les 3 machines doivent être connectées 
 1. Créer une copie du fichier `credentials.h` dans les dossier se terminant par `.ino`
 2. Entrer le SSID et le mot de passe du Wi-Fi à utiliser dans tous les fichiers `credentials.h` créés.
 3. Modifier l'ip dans les fichiers `conf.h` pour qu'elle corresponde à l'ip de la machine fog.
-4. Dans l'IDE Arduino, installer les extensions `DHT sensor library` par Adafruit et `PubSubClient` par Nick O'Leary.
+4. Dans l'IDE Arduino, installer les extensions `DHT sensor library` par Adafruit, `ArduinoJson` par Benoit Blanchon et `PubSubClient` par Nick O'Leary.
 5. Avec l'IDE Arduino ouvrir le dossier .ino et transférer le code sur la carte esp32.
 -  ### Consumer
 1. Créer un environnement virtuel `python -m venv venv`
@@ -117,4 +117,4 @@ Docker Desktop est une application qui permet d'exécuter et de gérer des conte
 
 ## Problèmes fréquents
 
-- Le Réseau de l'Umons a tendance à bloquer le protocole NTP (Network Time Protocol). Si l'heure et la date sont trop déréglées, cela peut créer des erreurs du type `Release file for http://deb.debian.org/debian-security/dists/bookworm-security/InRelease is not valid yet (invalid for another 1h 38min 49s). Updates for this repository will not be applied.` Il faut donc régler l'heure du Raspberry Pi à la main (`sudo date -s 2025-12-31`  `sudo date -s 10:43`)
+- Le Réseau de l'Umons a tendance à bloquer le protocole NTP (Network Time Protocol). Si l'heure et la date sont trop déréglées, cela peut créer des erreurs de mise à jour du type `Release file for http://deb.debian.org/debian-security/dists/bookworm-security/InRelease is not valid yet (invalid for another 1h 38min 49s). Updates for this repository will not be applied.` Il faut donc régler l'heure du Raspberry Pi à la main (`sudo date -s 2025-12-31`  `sudo date -s 10:43`)
