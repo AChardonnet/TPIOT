@@ -1,0 +1,15 @@
+{
+  "name": "JdbcSinkConnectorConnector_0",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "topics": "humidity, temperature",
+    "connection.url": "jdbc:postgresql://db:5432/iot",
+    "connection.user": "user",
+    "connection.password": "password",
+    "dialect.name": "PostgreSqlDatabaseDialect",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false"
+  }
+}
