@@ -54,8 +54,8 @@ Humi = []
 
 # consumer = AvroConsumer(conf)
 consumer = Consumer(conf)
-consumer.assign(topics)
-# consumer.subscribe(["test", "temperature", "humidity"])
+# consumer.assign(topics)
+consumer.subscribe(["test", "temperature", "humidity"])
 
 if graphing:
     plt.ion()
