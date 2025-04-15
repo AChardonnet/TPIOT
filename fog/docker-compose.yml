@@ -5,9 +5,11 @@ services:
     ports:
       - "1883:1883"
       - "8883:8883"
+    expose:
+      - 1883
     environment:
       KAFKA_MQTT_BOOTSTRAP_SERVERS: '192.168.137.1:9093' # adresse du serveur Kafka
-      KAFKA_MQTT_TOPIC_REGEX_LIST: "test-temp:test-temp, test:test, temperature:temperature, humidity:humidity" # correspondance entre les topics MQTT et Kafka (kafka:mqtt)
+      KAFKA_MQTT_TOPIC_REGEX_LIST: "test:.*test[^_]*, temperature:.*temperature[^_]*, humidity:.*humidity[^_]*" # correspondance entre les topics MQTT et Kafka (kafka:mqtt)
     networks:
       - default
     restart: always
