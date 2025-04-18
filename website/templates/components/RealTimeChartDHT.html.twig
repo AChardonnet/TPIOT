@@ -1,0 +1,18 @@
+<div {{ attributes }} 
+    data-poll="delay(500)|$render"
+>
+    Nombre de Points <input
+        type="search"
+        data-model="number"
+    ><input
+        type="range"
+        class="form-range"
+        id="number"
+        data-model="number"
+        min="1"
+        max="{{ computed.maxPoints }}"
+    >
+    <div>
+        {{ render_chart(computed.chart) }}
+    </div>
+</div>
