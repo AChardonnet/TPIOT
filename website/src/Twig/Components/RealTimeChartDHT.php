@@ -28,8 +28,8 @@ class RealTimeChartDHT
     {
         $chart = $this->chartBuilder->createChart(Chart::TYPE_LINE);
 
-        $dataPointsTemp = $this->entityManager->getRepository(Temperature::class)->findBy([], ['timestamp' => 'DESC'], $this->number);
-        $dataPointsHumi = $this->entityManager->getRepository(Humidity::class)->findBy([], ['timestamp' => 'DESC'], $this->number);
+        $dataPointsTemp = array_reverse($this->entityManager->getRepository(Temperature::class)->findBy([], ['timestamp' => 'DESC'], $this->number));
+        $dataPointsHumi = array_reverse($this->entityManager->getRepository(Humidity::class)->findBy([], ['timestamp' => 'DESC'], $this->number));
 
         $labels = array_map(fn($d) => (new \DateTime())->setTimestamp($d->getTimestamp() / 1000)->format('Y-m-d H:i:s'), $dataPointsTemp);
         $valuesTemp = array_map(fn($d) => $d->getTemperature(), $dataPointsTemp);

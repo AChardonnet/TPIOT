@@ -1,5 +1,0 @@
-{
-    "require": {
-        "symfony/ux-live-component": "^2.24"
-    }
-}

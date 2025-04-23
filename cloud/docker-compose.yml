@@ -147,6 +147,23 @@ services:
     networks:
       - kafka-network
     restart: always
+  website:
+    build: ../website
+    hostname: website
+    container_name: website
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    expose:
+      - 8000
+    volumes: 
+      - ../website:/var/www/html
+    environment:
+      DATABASE_URL: "postgresql://user:password@db:5432/iot?serverVersion=16&charset=utf8"
+    networks:
+      - kafka-network
+    restart: always
 
 networks:
   kafka-network:
