@@ -21,6 +21,8 @@ RUN echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory-limit.ini
 
 RUN npm i 
 
+RUN npm run build
+
 EXPOSE 80 
 
 RUN sed -i 's!/var/www/html!/var/www/public!g' \
