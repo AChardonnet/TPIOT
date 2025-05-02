@@ -11,11 +11,12 @@ WORKDIR /var/www
 
 COPY . /var/www/
 
+RUN mkdir -p /var/www/var
 RUN chown -R www-data:www-data /var/www/var
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts --no-autoloader
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install 
 
 RUN echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory-limit.ini
 

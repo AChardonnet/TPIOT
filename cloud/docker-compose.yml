@@ -161,6 +161,7 @@ services:
       - ../website:/var/www/html
     environment:
       DATABASE_URL: "postgresql://user:password@db:5432/iot?serverVersion=16&charset=utf8"
+      APP_ENV: "dev"
     networks:
       - kafka-network
     restart: always
