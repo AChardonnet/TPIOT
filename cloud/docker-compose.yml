@@ -165,6 +165,20 @@ services:
     networks:
       - kafka-network
     restart: always
+  
+  mqtt:
+    image: eclipse-mosquitto:latest
+    hostname: mqtt
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    expose:
+      - 1883
+      - 9001
+    networks:
+      - kafka-network
+    restart: always
 
 networks:
   kafka-network:

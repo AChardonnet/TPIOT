@@ -1,40 +1,23 @@
 {
-  "devDependencies": {
-    "@babel/core": "^7.17.0",
-    "@babel/preset-env": "^7.16.0",
-    "@popperjs/core": "^2.11.8",
-    "@symfony/webpack-encore": "^4.5.0",
-    "core-js": "^3.23.0",
-    "jquery": "^3.7.1",
-    "regenerator-runtime": "^0.13.9",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-notifier": "^1.15.0"
-  },
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "encore dev",
     "dev-server": "encore dev-server",
     "watch": "encore dev --watch",
-    "build": "encore production --progress"
+    "build": "encore production --progress",
+    "build:watch": "encore production --watch --progress"
   },
   "dependencies": {
-    "@babel/core": "^7.17.0",
-    "@babel/preset-env": "^7.16.0",
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
     "@hotwired/stimulus": "^3.2.2",
     "@popperjs/core": "^2.11.8",
     "@symfony/stimulus-bridge": "^4.0.1",
     "@symfony/ux-chartjs": "^2.24.0",
     "@symfony/ux-live-component": "^2.24.0",
     "@symfony/ux-turbo": "^2.24.0",
-    "@symfony/webpack-encore": "^4.5.0",
-    "bootstrap": "^5.3.2",
-    "core-js": "^3.23.0",
-    "jquery": "^3.7.1",
-    "regenerator-runtime": "^0.13.9",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-notifier": "^1.15.0"
+    "@symfony/webpack-encore": "^5.1.0",
+    "bootstrap": "^5.3.6"
   }
 }
