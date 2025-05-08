@@ -48,7 +48,7 @@ void setupTime()
   if (!getLocalTime(&timeinfo))
   {
     Serial.println("Failed to obtain time");
-    Serial.println("Please enter the current UNIX timestamp:");
+    Serial.println("Please enter the current UNIX timestamp in seconds:");
     while (!Serial.available())
     {
       delay(100);

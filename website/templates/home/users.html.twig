@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Recherche d'utilisateurs
+{% endblock %}
+
+{% block body %}
+	<h1>Recherche d'utilisateurs</h1>
+
+	{{ form_start(form) }}
+	{{ form_row(form.email, {'label' : 'E-mail', 'attr' : {'placeholder' : 'E-mail', 'class' : 'form-control'}}) }}
+	<div class="form-group">
+		<br>
+		<button type="submit" class="btn btn-success">Recherche</button>
+	</div>
+	{{ form_end(form) }}
+
+
+	{% if users is not empty %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">E-mail</th>
+					<th scope="col">Nom d'utilisateur</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.email }}</td>
+						<td>{{ user.username }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</ul>
+	{% else %}
+		<p>Aucun utilisateur trouvé.</p>
+	{% endif %}
+
+
+{% endblock %}

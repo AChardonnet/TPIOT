@@ -2,6 +2,7 @@
 <html>
 	<head>
 		{{ importmap() }}
+
 		<meta charset="UTF-8">
 		<title>
 			{% block title %}Welcome!
@@ -21,8 +22,13 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="#">Admin</a>
+							<a class="nav-link" href="{{ path("search_users") }}">Utilisateurs</a>
 						</li>
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a href="{{ path('admin') }}" class="nav-link">Administration</a>
+							</li>
+						{% endif %}
 					</ul>
 					<ul class="navbar-nav">
 						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -47,10 +53,9 @@
 				{% endblock %}
 			</div>
 			{% block javascripts %}
-				{% block importmap %}
-					{{ importmap('app') }}
-				{% endblock %}
+				{{ encore_entry_script_tags('app') }}
 			{% endblock %}
+
 		</div>
 	</body>
 </html>
