@@ -161,7 +161,7 @@ services:
       - ../website:/var/www/html
     environment:
       DATABASE_URL: "postgresql://user:password@db:5432/iot?serverVersion=16&charset=utf8"
-      APP_ENV: "dev"
+      APP_ENV: "prod"
     networks:
       - kafka-network
     restart: always
@@ -176,6 +176,8 @@ services:
     expose:
       - 1883
       - 9001
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     networks:
       - kafka-network
     restart: always
