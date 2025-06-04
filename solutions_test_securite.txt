@@ -1,0 +1,12 @@
+1) Symfony - 6.4.20 - non 
+2) Si laissé en dev : non, possibilité de récupérer tout un tas d'informations sur le fonctionnement de l'application à travers la console de Symfony mais à priori rien de critique 
+Si en prod : r.a.s. 
+3) Pas pour l'instant 
+
+1) Non 
+2) Rien ne peut être fait 
+3) Oui, c'est PHPSESSID et c'est donc juste un identifiant de session (le reste est géré par le backend : le cookie est associé à un utilisateur lors du login) 
+4) Le compte n'est pas bloqué : risque de bruteforce  
+
+1) ' OR 1=1 ; -- 
+2) ' UNION SELECT username, password FROM app_user ; -- 
