@@ -29,6 +29,11 @@ final class HomeController extends AbstractController
     {
         return $this->render('home/dht.html.twig', []);
     }
+    #[Route('/tds', name: 'tds_graph')]
+    public function tdsGraph(): Response
+    {
+        return $this->render('home/tds.html.twig', []);
+    }
 
     #[Route('/users', name: 'search_users')]
     public function searchUsers(Request $request, Connection $connection): Response

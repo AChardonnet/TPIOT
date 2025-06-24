@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header"><h1>Capteur TDS</h1></div>
+                <div class="card-body">{{ component('TDSChart') }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
