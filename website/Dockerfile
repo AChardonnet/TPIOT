@@ -16,7 +16,7 @@ RUN chown -R www-data:www-data /var/www/var
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN COMPOSER_ALLOW_SUPERUSER=1 composer install 
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts
 
 RUN echo "memory_limit = -1" > /usr/local/etc/php/conf.d/memory-limit.ini
 
