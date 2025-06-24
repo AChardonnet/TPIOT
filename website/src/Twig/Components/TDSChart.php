@@ -11,7 +11,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
 #[AsLiveComponent]
-class GenericChart
+class TDSChart
 {
     use DefaultActionTrait;
 
