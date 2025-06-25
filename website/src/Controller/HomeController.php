@@ -29,10 +29,17 @@ final class HomeController extends AbstractController
     {
         return $this->render('home/dht.html.twig', []);
     }
+
     #[Route('/tds', name: 'tds_graph')]
     public function tdsGraph(): Response
     {
         return $this->render('home/tds.html.twig', []);
+    }
+
+    #[Route('/ds18b20', name: 'ds18b20_graph')]
+    public function ds18b20Graph(): Response
+    {
+        return $this->render('home/ds18b20.html.twig', []);
     }
 
     #[Route('/users', name: 'search_users')]
@@ -44,7 +51,7 @@ final class HomeController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $sql = "SELECT username, email FROM app_user WHERE app_user.email = '".$userSearch->getEmail()."'";
+            $sql = "SELECT username, email FROM app_user WHERE app_user.email = '" . $userSearch->getEmail() . "'";
             $results = $connection->fetchAllAssociative($sql);
             $users = $results;
         }
