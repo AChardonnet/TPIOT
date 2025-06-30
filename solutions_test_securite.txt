@@ -1,12 +1,28 @@
-1) Symfony - 6.4.20 - non 
-2) Si laissé en dev : non, possibilité de récupérer tout un tas d'informations sur le fonctionnement de l'application à travers la console de Symfony mais à priori rien de critique 
-Si en prod : r.a.s. 
-3) Pas pour l'instant 
+L'objectif de cette section est principalement de découvrir le code et de se familiariser avec l'application web.
+1) Le framework utilisé est Symfony, la version est 6.4.20. Il n'y a pas de vulnérabilité connue.
+Cette information peut être trouvée depuis le site web si il est en dev. Si il est en prod, ce n'est pas forcément le cas, mais l'information peut être retrouvée dans le fichier composer.lock dans le code fourni.
+2) Si il est déployé en dev ce n'est pas le cas, et il est possible de récupérer tout un tas d'informations sur le fonctionnement de l'application à travers la console de Symfony sur le navigateur mais à priori rien de critique.
+Si en prod rien à signaler : il n'y a pas de fichiers ou de fonctionnalités accessibles grâce à un problème dans le déploiement et qui ne devraient pas l'être. 
+3) Il n'y a normalement rien à trouver, l'objectif de cette question étant juste de les faire utiliser un peu la console du navigateur et de leur faire regarder le code des différentes pages pour comprendre le fonctionnement du site.. 
 
-1) Non 
-2) Rien ne peut être fait 
-3) Oui, c'est PHPSESSID et c'est donc juste un identifiant de session (le reste est géré par le backend : le cookie est associé à un utilisateur lors du login) 
-4) Le compte n'est pas bloqué : risque de bruteforce  
+Cette section a pour objectif de découvrir un processus d'authentification et de manipuler des requêtes http.
+1) La requête est accessible dans la section "network" de la console du navigateur. L'objectif de la question est de regarder et de comprendre le contenu de la requête ; il n'y a rien à trouver.
+2) L'objectif est plus ou moins le même que pour la question précédente et rien ne peut être fait. 
+3) Oui, c'est PHPSESSID et c'est donc juste un identifiant de session (le reste est géré par le backend : le cookie est crée lors du premier accès à la page et il est associé à un utilisateur lors du login).
+4) Normalement, la requête peut être modifiée par un clic droit sur la requête puis en sélectionnant l'option "edit and resend". 
+Le compte n'est pas bloqué donc il y a un risque de bruteforce.
 
+Cette partie a pour objectif de faire découvrir une vraie vulnérabilité. L'injection peut être faite en entrant les commandes qui suivent dans le champ de recherche d'utilisateurs.
+La vulnérabilité vient d'un problème dans la façon dont les requêtes sont effectuées dans le code du backend : ce sont des requêtes en SQL pur, ce qui n'est pas recommandé, et le mail de l'utilisateur est simplement concaténé au reste de la requête.
+Il suffit donc d'entrer un guillemet (') pour "sortir" du mail dans la requête et modifier la requête en elle-même.
+Toutefois, simplement envoyer un guillemet est insuffisant et une telle requête sera invalide parce qu'elle contient un string non terminé (il y a le premier guillemet inclu dans la requête, le second qu'on a envoyé et qui ferme le string du mail, et le troisième qui ferme originellement le string du mail dans la requête).
+Il faut donc rajouter ";" pour terminer la requête et "--" pour commenter ce qu'il y a ensuite pour ne pas avoir d'erreur.
+Concernant le payload en lui-même (la requête modifiée que l'on effectue), le premier est "OR 1=1".
+La requête devient alors SELECT username, email FROM app_user WHERE app_user.email = '' OR 1=1;--'. Elle va tout simplement sélectionner tous les noms d'utilisateurs et mails pour lesquels le mail vaut '' ou pour lesquels 1=1, c'est à dire tous.
+Le second payload est plus complexe. L'idée est de joindre à la requête originelle une nouvelle qui sélectionne les noms d'utilisateurs et les mots de passe dans la base de donnée. La subtilité tient dans le fait que cette seconde requête doit contenir exactement le même nombre de colonnes (à savoir deux) que la requête de départ, sous peine d'avoir une erreur.
 1) ' OR 1=1 ; -- 
-2) ' UNION SELECT username, password FROM app_user ; -- 
+2) Le nom de la table est nécessaire pour effectuer cette question. Il y a, selon moi, trois possibilités :
+- soit ils l'obtiennent à partir du code fourni
+- soit le nom est donné dans la question pour faciliter / accélerer les choses
+- soit ils le retrouvent à travers des injections SQL (c'est possible mais pas des plus évidents)
+Payload : ' UNION SELECT username, password FROM app_user ; --
