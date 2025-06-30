@@ -71,7 +71,7 @@ void loop()
 
   char jsonBufferTemperature[400];
   serializeJson(jsonDocTemperature, jsonBufferTemperature);
-  client.publish("{\"temperatureSoil\":\"string\"}", jsonBufferTemperature);
+  client.publish("{\"temperature_soil\":\"string\"}", jsonBufferTemperature);
 
   delay(2000); // Wait for 2 seconds before sending the next message
 }
