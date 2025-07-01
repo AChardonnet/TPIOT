@@ -7,6 +7,8 @@ extern PubSubClient client;
 void setup_wifi(const char *ssid, const char *password)
 {
   delay(10);
+  Serial.print("Connecting to Wi-Fi : ");
+  Serial.println(ssid);
   Serial.println("Connecting to WiFi...");
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
